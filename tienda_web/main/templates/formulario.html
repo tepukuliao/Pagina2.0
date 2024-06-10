@@ -1,0 +1,62 @@
+{% extends "plantilla.html" %}
+
+
+
+{% block body %}
+
+<div class="center">
+
+    <h1>Bienvenido a reptilia Chile</h1>
+    <p>Porfavor ingrese sus datos para crear una cuenta</p>
+    
+    <form id="formulario" class="formulario">
+      {% csrf_token %}
+    
+    <div class="text-field-form">
+        <label for="nombre">Nombre</label> <br>
+        <input type="text" name="nombre"  placeholder="nombre" id="nombre" > <br>
+        <span id="mensajeNombre" style="color: red;"></span> <br>
+    </div>
+    
+    <div class="text-field-form">
+    <label for="usuario">Usuario</label> <br>
+      <input type="text" name="usuario" placeholder="Usuario" id="usuario" > <br>
+      <span id="mensajeUsuario" style="color: red;"></span> <br>
+    </div>
+    
+    
+    <div class="text-field-form">
+    <label for="correo">Correo Electronico</label> <br>
+      <input type="email" name="correo" placeholder="correo" id="correo" > <br>
+      <span id="mensajeCorreo" style="color: red;"></span>  <br>
+    </div>
+     
+    
+    <div class="text-field-form"> 
+        <label for="password1">contraseña</label> <br>
+        <input type="text" name="password1"  placeholder="Contraseña" id="password1" > <br>
+        <span id="mensajeContra" style="color: red;"></span> <br>
+    </div>
+
+    <div class="text-field-form"> 
+        <label for="password2">Repita contraseña</label> <br>
+        <input type="text" name="password2"  placeholder="Contraseña" id="password2" > <br>
+        <span id="mensajeContra" style="color: red;"></span> <br>
+    </div>
+    {% if mensaje %}
+        <p> {{ mensaje }} </p>
+      
+      {% endif %}
+      
+
+    <div class="crear-cuenta">
+          <button type="submit">Crea cuenta</button>
+        </div>
+    
+    </form>
+    </div>
+    
+    
+    <script src="java\formulario.js"></script> 
+
+{% endblock  %}

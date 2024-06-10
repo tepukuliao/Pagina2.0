@@ -1,16 +1,52 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.db import IntegrityError
 
 
 def index(request):
+    return render(request,'index.html', {'usuario':request.user})
+    
+
+def formulario(request):
     try:
-        if request.method == 'POST':
+        if request.method == "POST":
+            nombre = request.POST.get("nombre") 
+            usuario = request.POST.get("usuario")
             correo = request.POST.get("correo")
-            contraseña = request.POST.get("contraseña")
-            print(correo)
-            print(contraseña)
-            return render(request,'index.html')
+            password1 = request.POST.get("password1")
+            password2 = request.POST.get("password2")
+            print(nombre,usuario,correo,password1,password2)
+            if password1 == password2:
+                user = User.objects.create_user(first_name=nombre, username=usuario, email=correo, password=password1)
+                user.save()
+                return render(request,'formulario.html',
+                {'mensaje':'Usuario creado existosamente'})
+            else:
+                return render(request,'formulario.html',
+                {'mensaje':'Las contraseñas no coinciden'})
         elif request.method == 'GET':
-            return render(request,'index.html')
+            return render(request,'formulario.html')
+
+    except IntegrityError as valorUnico:
+        print(ValorUnico)
+        return render(request,'formulario.html',{'mensaje':'Usuario ya existe'})
     except Exception as error:
         print(error)
-    
+
+
+def iniciar_sesion(request):
+    try:
+        if request.method == "POST":
+            usuario = request.POST.get("usuario")
+            password = request.POST.get("password")
+            print(usuario,password)
+            user = authenticate(request, username=usuario, password=password)
+            login(request,user)
+            return render(request,'index.html')
+        elif request.method == 'GET':
+            return render(request,'login.html')
+    except Exception as error:
+        print(error)
+        return render(request, 'login.html', {'error': 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo.'})
+
