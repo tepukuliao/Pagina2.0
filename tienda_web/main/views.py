@@ -20,8 +20,7 @@ def formulario(request):
             if password1 == password2:
                 user = User.objects.create_user(first_name=nombre, username=usuario, email=correo, password=password1)
                 user.save()
-                return render(request,'formulario.html',
-                {'mensaje':'Usuario creado existosamente'})
+                return render(request,'login.html')
             else:
                 return render(request,'formulario.html',
                 {'mensaje':'Las contraseñas no coinciden'})
@@ -29,10 +28,11 @@ def formulario(request):
             return render(request,'formulario.html')
 
     except IntegrityError as valorUnico:
-        print(ValorUnico)
+        print(valorUnico)
         return render(request,'formulario.html',{'mensaje':'Usuario ya existe'})
     except Exception as error:
         print(error)
+        return render(request, 'formulario.html', {'error': 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo.'})
 
 
 def iniciar_sesion(request):
