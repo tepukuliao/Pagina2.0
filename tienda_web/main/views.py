@@ -1,6 +1,7 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from django.db import IntegrityError
 
 
@@ -50,3 +51,6 @@ def iniciar_sesion(request):
         print(error)
         return render(request, 'login.html', {'error': 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo.'})
 
+
+def perfil(request):
+    return render(request,'perfil.html')

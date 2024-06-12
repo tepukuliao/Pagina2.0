@@ -45,8 +45,12 @@
         <input type="text" name="password2"  placeholder="Contraseña" id="password2" > <br>
         <span id="mensajeContra" style="color: red;"></span> <br>
     </div>
+
     {% if mensaje %}
+    <div class="alert alert-danger" role="alert">
         <p> {{ mensaje }} </p>
+    </div>
+    
       
       {% endif %}
       
@@ -59,6 +63,6 @@
     </div>
     
     
-    <script src="{% static "js\formulario.js" %}"></script> 
+ 
 
 {% endblock  %}
