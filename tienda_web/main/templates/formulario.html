@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<link rel="stylesheet" href="{% static "css\styleform.css" %}">
+<link rel="stylesheet" href="{% static "css\formulario.css" %}">
 
 <div class="center">
 
@@ -15,33 +15,39 @@
       {% csrf_token %}
     
     <div class="text-field-form">
-        <label for="nombre">Nombre</label> <br>
+        <label for="nombre"></label> <br>
         <input type="text" name="nombre"  placeholder="nombre" id="nombre" > <br>
         <span id="mensajeNombre" style="color: red;"></span> <br>
     </div>
+
+    <div class="text-field-form">
+      <label for="apellido"></label> <br>
+      <input type="text" name="apellido"  placeholder="apellido" id="apellido" > <br>
+      <span id="mensajeNombre" style="color: red;"></span> <br>
+  </div>
     
     <div class="text-field-form">
-    <label for="usuario">Usuario</label> <br>
+    <label for="usuario"></label> <br>
       <input type="text" name="usuario" placeholder="Usuario" id="usuario" > <br>
       <span id="mensajeUsuario" style="color: red;"></span> <br>
     </div>
     
     
     <div class="text-field-form">
-    <label for="correo">Correo Electronico</label> <br>
+    <label for="correo"></label> <br>
       <input type="email" name="correo" placeholder="correo" id="correo" > <br>
       <span id="mensajeCorreo" style="color: red;"></span>  <br>
     </div>
      
     
     <div class="text-field-form"> 
-        <label for="password1">Contraseña</label> <br>
+        <label for="password1"></label> <br>
         <input type="text" name="password1"  placeholder="Contraseña" id="password1" > <br>
         <span id="mensajeContra" style="color: red;"></span> <br>
     </div>
 
     <div class="text-field-form"> 
-        <label for="password2">Repita contraseña</label> <br>
+        <label for="password2"></label> <br>
         <input type="text" name="password2"  placeholder="Contraseña" id="password2" > <br>
         <span id="mensajeContra" style="color: red;"></span> <br>
     </div>
