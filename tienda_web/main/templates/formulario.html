@@ -15,50 +15,52 @@
       {% csrf_token %}
     
     <div class="text-field-form">
-        <label for="nombre"></label> <br>
-        <input type="text" name="nombre"  placeholder="nombre" id="nombre" > <br>
-        <span id="mensajeNombre" style="color: red;"></span> <br>
+         
+      <pre><input type="number" name="rut"  placeholder="rut" id="rut" ></pre>
+        
+    </div>
+  
+    <div class="text-field-form">
+      
+      <pre><input type="text" name="usuario" placeholder="Usuario" id="usuario" ></pre>
+        
     </div>
 
     <div class="text-field-form">
-      <label for="apellido"></label> <br>
-      <input type="text" name="apellido"  placeholder="apellido" id="apellido" > <br>
-      <span id="mensajeNombre" style="color: red;"></span> <br>
-  </div>
+     
+      <pre><input type="text" name="nombre"  placeholder="nombre" id="nombre" ></pre> 
+      
+    </div>
     
     <div class="text-field-form">
-    <label for="usuario"></label> <br>
-      <input type="text" name="usuario" placeholder="Usuario" id="usuario" > <br>
-      <span id="mensajeUsuario" style="color: red;"></span> <br>
+     
+      <pre><input type="text" name="apellido"  placeholder="apellido" id="apellido" ></pre> 
+      
     </div>
     
     
     <div class="text-field-form">
-    <label for="correo"></label> <br>
-      <input type="email" name="correo" placeholder="correo" id="correo" > <br>
-      <span id="mensajeCorreo" style="color: red;"></span>  <br>
+    
+      <pre><input type="email" name="correo" placeholder="correo" id="correo" ></pre> 
+      
     </div>
      
     
     <div class="text-field-form"> 
-        <label for="password1"></label> <br>
-        <input type="text" name="password1"  placeholder="Contraseña" id="password1" > <br>
-        <span id="mensajeContra" style="color: red;"></span> <br>
+         
+        <pre><input type="text" name="password1"  placeholder="Contraseña" id="password1" ></pre> 
+        
     </div>
 
     <div class="text-field-form"> 
-        <label for="password2"></label> <br>
-        <input type="text" name="password2"  placeholder="Contraseña" id="password2" > <br>
-        <span id="mensajeContra" style="color: red;"></span> <br>
+         
+        <pre><input type="text" name="password2"  placeholder="Repita contraseña" id="password2" ></pre> 
+        
     </div>
 
-    {% if mensaje %}
-    <div class="alert alert-danger" role="alert">
-        <p> {{ mensaje }} </p>
-    </div>
-    
-      
-      {% endif %}
+    {% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
       
 
     <div class="crear-cuenta">

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.db import IntegrityError
-import requests
+from .models import Usuario
 
 
 def index(request):
@@ -11,31 +11,37 @@ def index(request):
     
 
 def formulario(request):
-    try:
-        if request.method == "POST":
-            nombre = request.POST.get("nombre") 
-            apellido = request.POST.get("apellido")
-            usuario = request.POST.get("usuario")
-            correo = request.POST.get("correo")
-            password1 = request.POST.get("password1")
-            password2 = request.POST.get("password2")
-            print(nombre,apellido,usuario,correo,password1,password2)
-            if password1 == password2:
-                user = User.objects.create_user(first_name=nombre, last_name=apellido, username=usuario, email=correo, password=password1)
-                user.save()
-                return render(request,'login.html')
-            else:
-                return render(request,'formulario.html',
-                {'mensaje':'Las contraseñas no coinciden'})
-        elif request.method == 'GET':
-            return render(request,'formulario.html')
+    if request.method == 'GET':
 
-    except IntegrityError as valorUnico:
-        print(valorUnico)
-        return render(request,'formulario.html',{'mensaje':'Usuario ya existe'})
-    except Exception as error:
-        print(error)
-        return render(request, 'formulario.html', {'error': 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo.'})
+        return render(request,'formulario.html')
+    else:
+        print("metodo post")
+        rut = request.POST.get('rut')
+        usuario = request.POST.get('usuario')
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        correo = request.POST.get('correo')
+        fecha_nacimiento = request.POST.get('fechaNac')
+        telefono = request.POST.get('fono')
+
+        try:
+            usuario = Usuario.objects.create(
+                rut = rut,
+                usuario = usuario,
+                nombre = nombre,
+                apellido = apellido,
+                correo = correo,
+                fecha_nacimiento = fecha_nacimiento,
+                telefono = telefono,
+                activo = True
+            )
+            return render(request,'formulario.html')
+        except IntegrityError as error:
+            print(error)
+            # El correo electrónico ya existe en la base de datos
+            error_message = "El correo electrónico ya existe en la base de datos. Por favor, ingresa un correo electrónico diferente."
+            return render(request,'formulario.html', {'error_message': error_message})
+
 
 
 def iniciar_sesion(request):
@@ -58,7 +64,5 @@ def perfil(request):
     return render(request,'perfil.html')
 
 
-def home(request):
-    url = url
-    response = requests.get(url)
+
     
