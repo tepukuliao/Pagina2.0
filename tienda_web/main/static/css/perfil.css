@@ -22,13 +22,5 @@ body{
 
 .center h1{
     color: antiquewhite;
-    text-align: center;
-    padding: 20px 0 0 0;
-}
-
-.center p{
-    text-align: center;
-    color: antiquewhite;
-    padding: 0 0 20px 0;
-    border-bottom: 2px solid rgb(5, 185, 50);
+    text-align: end;
 }
