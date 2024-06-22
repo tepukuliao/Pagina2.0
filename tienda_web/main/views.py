@@ -15,7 +15,7 @@ def formulario(request):
 
         return render(request,'formulario.html')
     else:
-        print("metodo post")
+
         rut = request.POST.get('rut')
         usuario = request.POST.get('usuario')
         nombre = request.POST.get('nombre')
@@ -23,6 +23,7 @@ def formulario(request):
         correo = request.POST.get('correo')
         fecha_nacimiento = request.POST.get('fechaNac')
         telefono = request.POST.get('fono')
+        print(usuario, nombre, correo, telefono)
 
         try:
             usuario = Usuario.objects.create(
@@ -35,7 +36,7 @@ def formulario(request):
                 telefono = telefono,
                 activo = True
             )
-            return render(request,'formulario.html')
+            return render(request,'index.html')
         except IntegrityError as error:
             print(error)
             # El correo electrónico ya existe en la base de datos

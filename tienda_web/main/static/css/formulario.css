@@ -10,7 +10,7 @@ body{
  
 .center{
      position: absolute;
-     top: 70%;
+     top: 55%;
      left: 50%;
      transform: translate(-50%, -50%);
      width: 500px;
@@ -29,7 +29,7 @@ body{
 .center p{
     text-align: center;
     color: antiquewhite;
-    padding: 0 0 20px 0;
+    padding: 0 0 10px 0;
     border-bottom: 2px solid rgb(5, 185, 50);
 }
 
