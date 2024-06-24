@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.db import IntegrityError
 from .models import Usuario
+from django.contrib.auth.hashers import make_password, check_password
 
 
 def index(request):
@@ -23,7 +24,12 @@ def formulario(request):
         correo = request.POST.get('correo')
         fecha_nacimiento = request.POST.get('fechaNac')
         telefono = request.POST.get('fono')
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
         print(usuario, nombre, correo, telefono)
+        if password1 != password2:
+            error_message = "Las contraseñas no coinciden."
+            return render(request, 'formulario.html', {'error_message': error_message})
 
         try:
             usuario = Usuario.objects.create(
@@ -34,13 +40,13 @@ def formulario(request):
                 correo = correo,
                 fecha_nacimiento = fecha_nacimiento,
                 telefono = telefono,
+                password = make_password(password1),
                 activo = True
             )
-            return render(request,'index.html')
+            return render(request,'login.html')
         except IntegrityError as error:
             print(error)
-            # El correo electrónico ya existe en la base de datos
-            error_message = "El correo electrónico ya existe en la base de datos. Por favor, ingresa un correo electrónico diferente."
+            error_message = "El correo electrónico ya existe."
             return render(request,'formulario.html', {'error_message': error_message})
 
 

@@ -14,59 +14,40 @@
     <form id="formulario" class="formulario" method = "POST">
       {% csrf_token %}
     
-    <div class="text-field-form">
-         
+    <div class="text-field-form">     
       <pre><input type="number" name="rut"  placeholder="rut" id="rut" ></pre>
-        
     </div>
   
-    <div class="text-field-form">
-      
-      <pre><input type="text" name="usuario" placeholder="Usuario" id="usuario" ></pre>
-        
+    <div class="text-field-form">   
+      <pre><input type="text" name="usuario" placeholder="Usuario" id="usuario" ></pre>        
     </div>
 
-    <div class="text-field-form">
-     
-      <pre><input type="text" name="nombre"  placeholder="nombre" id="nombre" ></pre> 
-      
+    <div class="text-field-form">     
+      <pre><input type="text" name="nombre"  placeholder="nombre" id="nombre" ></pre>      
+    </div>
+    
+    <div class="text-field-form">    
+      <pre><input type="text" name="apellido"  placeholder="apellido" id="apellido" ></pre>     
     </div>
     
     <div class="text-field-form">
-     
-      <pre><input type="text" name="apellido"  placeholder="apellido" id="apellido" ></pre> 
-      
-    </div>
-    
-    
-    <div class="text-field-form">
-    
       <pre><input type="email" name="correo" placeholder="correo" id="correo" ></pre> 
-      
     </div>
 
     <div class="text-field-form">
-    
       <pre><input type="date" name="fechaNac" id="fechaNac" ></pre> 
-      
     </div>
 
     <div class="text-field-form">
-    
       <pre><input type="number" name="fono" placeholder="Telefono" id="fono" ></pre> 
-      
     </div>
     
-    <div class="text-field-form"> 
-         
-        <pre><input type="text" name="password1"  placeholder="Contraseña" id="password1" ></pre> 
-        
+    <div class="text-field-form">    
+        <pre><input type="text" name="password1"  placeholder="Contraseña" id="password1" ></pre>   
     </div>
 
-    <div class="text-field-form"> 
-         
-        <pre><input type="text" name="password2"  placeholder="Repita contraseña" id="password2" ></pre> 
-        
+    <div class="text-field-form">    
+        <pre><input type="text" name="password2"  placeholder="Repita contraseña" id="password2" ></pre>   
     </div>
 
     {% if error_message %}
