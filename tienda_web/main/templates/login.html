@@ -17,14 +17,14 @@
         <input id="usuario" name="usuario" type="text" required>
         <span></span>
         <label for="usuario">Usuario</label>
-        <p id="mensajeUser"></p>
+
     </div>
     
     <div class="txt-field">
         <input id="password" name="password" type="password" required>
         <span></span>
         <label for="password">Contraseña</label>
-        <p id="mensajePass"></p>
+
     </div>
     <div class="pass">
         <a href="restablecer.html">
@@ -34,6 +34,9 @@
         ¿Necesitas una cuenta?<a href="{% url "formulario" %}">Regístrate</a>
         
     </div>
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
  
     </form>
 
