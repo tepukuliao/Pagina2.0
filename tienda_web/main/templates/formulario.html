@@ -11,54 +11,59 @@
     <h1>Bienvenido a reptilia Chile</h1>
     <p>Porfavor ingrese sus datos para crear una cuenta</p>
     
-    <form id="formulario" class="formulario" method = "POST">
+    <form class="row g-3" method = "POST">
       {% csrf_token %}
     
-    <div class="text-field-form">     
-      <pre><input type="number" name="rut"  placeholder="rut" id="rut" ></pre>
-    </div>
-  
-    <div class="text-field-form">   
-      <pre><input type="text" name="usuario" placeholder="Usuario" id="usuario" ></pre>        
-    </div>
+      <div class="col-auto" style="padding:0 5%;">
+        <label for="rut" style="color: antiquewhite;">Rut</label>
+        <input type="number" name="rut" class="form-control" placeholder="Rut" id="rut" >
+      </div>
 
-    <div class="text-field-form">     
-      <pre><input type="text" name="nombre"  placeholder="nombre" id="nombre" ></pre>      
-    </div>
-    
-    <div class="text-field-form">    
-      <pre><input type="text" name="apellido"  placeholder="apellido" id="apellido" ></pre>     
-    </div>
-    
-    <div class="text-field-form">
-      <pre><input type="email" name="correo" placeholder="correo" id="correo" ></pre> 
-    </div>
+      <div class="col-auto">
+        <label for="username" style="color: antiquewhite;">Usuario</label>
+        <input type="text" class="form-control" name="username" placeholder="Usuario" id="username">
+      </div>
 
-    <div class="text-field-form">
-      <pre><input type="date" name="fechaNac" id="fechaNac" ></pre> 
-    </div>
+      <div class="col-auto" style="padding:0 5%;">
+        <label for="nombre" style="color: antiquewhite;">Nombre</label>
+        <input type="text" class="form-control" name="nombre"  placeholder="Nombre" id="nombre" >
+      </div>
 
-    <div class="text-field-form">
-      <pre><input type="number" name="fono" placeholder="Telefono" id="fono" ></pre> 
-    </div>
-    
-    <div class="text-field-form">    
-        <pre><input type="text" name="password1"  placeholder="Contraseña" id="password1" ></pre>   
-    </div>
+      <div class="col-auto">
+        <label for="apellido" style="color: antiquewhite;">Apellido</label>
+        <input type="text" class="form-control" name="apellido"  placeholder="Apellido" id="apellido">
+      </div>
+    <fieldset style="padding:0 5%;">
+      <div class="col-auto">
+        <label for="correo" style="color: antiquewhite;">Correo</label>
+        <input type="email" class="form-control" name="correo" placeholder="Correo" id="correo">
+      </div>
+    </fieldset>
+      <div class="col-auto" style="padding:0 5%;">
+        <label for="fechaNac" style="color: antiquewhite;">Fecha de nacimiento</label>
+        <input type="date" class="form-control" name="fechaNac" id="fechaNac">
+      </div>
 
-    <div class="text-field-form">    
-        <pre><input type="text" name="password2"  placeholder="Repita contraseña" id="password2" ></pre>   
-    </div>
-
-    {% if error_message %}
-    <p style="color: red;">{{ error_message }}</p>
-    {% endif %}
+      <div class="col-auto">
+        <label for="telefono" style="color: antiquewhite;">Telefono</label>
+        <input type="number" class="form-control" name="telefono" placeholder="Telefono" id="telefono">
+      </div>
       
+      <fieldset style="padding:0 5%;">
+      <div class="col-auto">
+        <label for="password1" style="color: antiquewhite;">Contraseña</label>
+        <input type="text" class="form-control" name="password1" placeholder="Contraseña" id="password1">
+      </div>
+      
+      <div class="col-auto">
+        <label for="password2" style="color: antiquewhite;">Repita Contraseña</label>
+        <input type="text" class="form-control" name="password2" placeholder="Repita contraseña" id="password2" >
+      </div>
+    </fieldset>
 
-    <div class="crear-cuenta">
-          <button type="submit">Crea cuenta</button>
-        </div>
-    
+      <div class="crear-cuenta">
+        <button type="submit">Crea cuenta</button>
+      </div>
     </form>
     </div>
     

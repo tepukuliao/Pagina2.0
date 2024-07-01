@@ -8,12 +8,18 @@
 
 <div class="center">
 
-    <h1>Usuario</h1>
+    <h1>perfil</h1>
 
-    <p>Nombre</p>
-    <p>correo</p>
-    <p>ssss</p>
+    {% for x in perfil %}
 
+    <tr>
+        <td style="color: antiquewhite;">{{x.username}}</td>
+        <td style="color: antiquewhite;">{{x.nombre}}</td>
+        <td style="color: antiquewhite;">{{x.aperllido}}</td>
+        <td style="color: antiquewhite;">{{x.correo}}</td>
+
+    </tr>
+    {% endfor %}
 </div>
 
 {% endblock  %}

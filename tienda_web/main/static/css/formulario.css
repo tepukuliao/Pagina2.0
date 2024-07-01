@@ -33,20 +33,6 @@ body{
     border-bottom: 2px solid rgb(5, 185, 50);
 }
 
-form .text-field-form{
-    padding: 0 20px;
-    box-sizing: border-box;
-    border-bottom: 2px solid rgb(5, 185, 50);
-    position: relative;
-    margin: 30px 0;
-}
-
-.text-field-form input{
-    width: 90%;
-    font-size: 16px;
-   
-}
-
 
 button[type="submit"]{
     width: 100%;
