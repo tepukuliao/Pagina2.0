@@ -3,7 +3,19 @@
 {% load static %}
 
 {% block body %}
+<link rel="stylesheet" href="{% static "css/perfil.css" %}">
 
+<<<<<<< HEAD
+<div class="center">
+
+    <h1>Hola, {{usuario.usuario}}</h1>
+
+    <p>Nombre:{{usuario.nombre}}</p>
+    <p>Apellido:{{usuario.apellido}}</p>
+    <p>correo:{{usuario.correo}}</p>
+ 
+
+=======
 <link rel="stylesheet" href="{% static "css/perfil.css" %}">
 
 <div class="center">
@@ -20,6 +32,7 @@
 
     </tr>
     {% endfor %}
+>>>>>>> 463af8a668f2153497b9f16afc5f5d58ddaf7484
 </div>
 
 {% endblock  %}

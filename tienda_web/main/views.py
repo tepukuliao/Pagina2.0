@@ -1,11 +1,20 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
+<<<<<<< HEAD
+from django.contrib.auth import authenticate, login, logout
+=======
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, get_user_model
+>>>>>>> 463af8a668f2153497b9f16afc5f5d58ddaf7484
 from django.contrib import messages
+from .models import Usuario
 from django.db import IntegrityError
+<<<<<<< HEAD
+from django.contrib.auth.hashers import make_password
+=======
 from .models import Usuario
 from django.contrib.auth.hashers import make_password, check_password
+>>>>>>> 463af8a668f2153497b9f16afc5f5d58ddaf7484
 
 
 def index(request):
@@ -13,6 +22,44 @@ def index(request):
     
 
 def formulario(request):
+<<<<<<< HEAD
+    try:
+        if request.method == "POST":
+            rut = request.POST.get("rut")
+            usuario = request.POST.get("usuario")
+            nombre = request.POST.get("nombre") 
+            apellido = request.POST.get("apellido")
+            correo = request.POST.get("correo")
+            fechaNac = request.POST.get("fechaNac")
+            password1 = request.POST.get("password1")
+            password2 = request.POST.get("password2")
+            print(request.POST)
+            if password1 != password2:
+                return render(request, 'formulario.html', {'mensaje': 'Las contraseñas no coinciden'})
+            
+            nuevo_usuario = Usuario(
+                rut=rut,
+                usuario=usuario,
+                nombre=nombre,
+                apellido=apellido,
+                correo=correo,
+                fecha_nacimiento=fechaNac,
+                password=make_password(password1)
+                )
+            nuevo_usuario.save()  
+            
+            return render(request, 'login.html')  
+
+        elif request.method == 'GET':
+            return render(request, 'formulario.html')
+
+    except IntegrityError as valorUnico:
+        print(valorUnico)
+        return render(request, 'formulario.html', {'mensaje': 'El usuario o correo ya existe'})
+    except Exception as error:
+        print(error)
+        return render(request, 'formulario.html', {'error': 'Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo.'})
+=======
     if request.method == 'GET':
 
         return render(request,'formulario.html')
@@ -59,6 +106,7 @@ def formulario(request):
 def register(request):
     return render(request, 'registration/register.html')
 
+>>>>>>> 463af8a668f2153497b9f16afc5f5d58ddaf7484
 
 
 def iniciar_sesion(request):
@@ -92,9 +140,20 @@ def iniciar_sesion(request):
    
 @login_required
 def perfil(request):
+<<<<<<< HEAD
+    usuario = request.user
+
+    return render(request,'perfil.html',{'usuario': usuario})
+
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('login')
+=======
     perfil = Usuario.objects.all()
     return render(request,'perfil.html')
 
 
 
     
+>>>>>>> 463af8a668f2153497b9f16afc5f5d58ddaf7484
